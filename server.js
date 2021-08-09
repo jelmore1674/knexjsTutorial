@@ -21,10 +21,10 @@ app.use(function(req, res, next) {
 const db = knex({
     client: 'pg',
     connection: {
-        host: '127.0.0.1',
-        user: '',
-        password: '',
-        database: 'knex',
+        connectionString: process.env.DATABASE_URL,
+        ssl: {
+            rejectUnauthorized: false,
+        },
     },
 });
 app.get('/', async(req, res) => {
